@@ -1,0 +1,37 @@
+data:
+  dataset: PNC
+  batch_size: 256
+  test_batch_size: 256
+  val_batch_size: 256
+  train_set: 0.7
+  val_set: 0.1
+  node_feature: /YourPathToDataset/PNC_data/514_pearson.npy
+  time_seires: /YourPathToDataset/PNC_data/514_timeseries.npy
+  label: /YourPathToDataset/PNC_data/PNC_Gender_Age.csv
+
+
+model:
+  # seq, gnn, fbnetgen 
+  type: FCNet
+
+
+
+train:
+  # normal or bilevel 
+  method: normal
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  epochs: 500
+  optimizer: adam
+
+  group_loss: false
+  sparsity_loss: false
+  dominate_loss: false
+  dominate_loss_weight: 1.0e-4
+  sparsity_loss_weight: 1.0e-4
+  dominate_softmax: true
+  log_folder: result
+  topk: 3
+  
+  # uniform or pearson
+  pure_gnn_graph: pearson

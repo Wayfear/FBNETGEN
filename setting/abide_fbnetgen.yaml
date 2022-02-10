@@ -1,0 +1,44 @@
+data:
+  dataset: ABIDE
+  batch_size: 16
+  test_batch_size: 16
+  val_batch_size: 16
+  train_set: 0.7
+  val_set: 0.1
+  time_seires: /YourPathToDataset/ABIDE_pcp/abide.npy
+
+model:
+  # seq, gnn, fbnetgen 
+  type: fbnetgen
+
+  # gru or cnn 
+  extractor_type: gru
+  embedding_size: 8
+  window_size: 4
+
+  cnn_pool_size: 16
+
+  # product or linear
+  graph_generation: product
+
+  num_gru_layers: 4
+
+  dropout: 0.5
+
+
+
+train:
+  # normal or bilevel 
+  method: normal
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  epochs: 500
+  optimizer: adam
+
+  group_loss: true
+  sparsity_loss: true
+  sparsity_loss_weight: 1.0e-4
+  log_folder: result
+  
+  # uniform or pearson
+  pure_gnn_graph: pearson
